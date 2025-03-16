@@ -1,6 +1,6 @@
-### AI-Powered IELTS Grammar Correction and Essay Generation
+## AI-Powered IELTS Grammar Correction and Essay Generation
 
-### Overview
+## Overview
 # This project aims to develop an AI-driven system to assist IELTS candidates in improving their writing skills by offering automated grammar correction, real-time scoring, and AI-generated essays. The system leverages Natural Language Processing (NLP), Machine Learning (ML), and Direct Preference Optimization (DPO) to provide structured, IELTS-specific feedback.
 
 ### Problem Statement
