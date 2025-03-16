@@ -28,3 +28,4 @@
 ### Automated Scoring: Correlation with human IELTS grading
 # Conclusion
 ### This AI-powered IELTS writing assistant provides personalized, real-time, and structured feedback to candidates. It represents a significant step towards automated, fair, and scalable language assessment, with potential applications in other standardized tests like TOEFL and GRE Analytical Writing.
+# still work in progrecess
