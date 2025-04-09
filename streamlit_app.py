@@ -54,18 +54,23 @@ def detect_remaining_errors(text):
         count += len(matches)
     return count
 
-def correct_text(text, debug=False):
-    lt_corrected = tool.correct(text)
+def correct_paragraph(paragraph):
+    lt_corrected = tool.correct(paragraph)
     input_ids = tokenizer("gec: " + lt_corrected, return_tensors="pt").input_ids.to(model.device)
-    output = model.generate(input_ids, max_length=128)
+    output = model.generate(input_ids, max_length=512)
     corrected = tokenizer.decode(output[0], skip_special_tokens=True)
     corrected = simplify_comparative(corrected)
     corrected = fix_conditional_third(corrected)
     corrected = fix_time_expressions(corrected)
+    return corrected
+
+def correct_text(text, debug=False):
+    paragraphs = re.split(r"(?<=\.)\s+(?=[A-Z])", text.strip())
+    corrected_paragraphs = [correct_paragraph(p) for p in paragraphs]
+    corrected = " ".join(corrected_paragraphs)
 
     if debug:
         print("🔍 Original :", text)
-        print("🚰 LanguageTool pre-fix:", lt_corrected)
         print("✅ Corrected:", corrected)
         missed = detect_remaining_errors(corrected)
         print(f"🚨 Remaining suspicious patterns: {missed}")
@@ -114,11 +119,7 @@ if input_text:
 
     with col2:
         st.markdown("### ✅ Corrected Output")
-        components.html(f"""
-            <div style="width: 100%; height: 200px; background-color: #2c2c2c; color: white; padding: 10px; font-family: 'Source Code Pro', monospace; border-radius: 6px; border: 1px solid #555; overflow: auto;">
-                {corrected}
-            </div>
-        """, height=250)
+        st.text_area("Corrected Text", corrected, height=200, label_visibility="collapsed", disabled=True, key="corrected-output")
 
     missed = detect_remaining_errors(corrected)
     if missed:
