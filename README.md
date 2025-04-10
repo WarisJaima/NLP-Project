@@ -53,13 +53,13 @@
 ### Evaluation & Suggestions
 ### After generating or submitting an essay, the system will:
 
-###   Evaluate it based on IELTS band criteria.
+### - Evaluate it based on IELTS band criteria.
 
-###   Provide targeted suggestions.
+### - Provide targeted suggestions.
 
-###   Possibly include highlighted feedback (like Grammarly).
+### - Possibly include highlighted feedback (like Grammarly).
 
-###   The evaluation will help users revise their essay, making it more aligned with task achievement, coherence, vocabulary, and grammar.
+### - The evaluation will help users revise their essay, making it more aligned with task achievement, coherence, vocabulary, and grammar.
 
 # Web App Structure
 ### The app consists of:
