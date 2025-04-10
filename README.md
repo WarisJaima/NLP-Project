@@ -21,3 +21,12 @@
 ### Contact
 
 ### This page acts as the entry point, explaining the core value proposition of the tool and guiding users toward interactive features.
+
+# What This Application Is About
+### This web application helps users improve their IELTS Writing skills. It has two core features:
+
+### Essay Scoring: Users can paste their own IELTS essays and receive a band score along with a detailed evaluation.
+
+### Essay Generation: Users can input a prompt, and the system will generate a band-appropriate essay for them.
+
+### The backend utilizes T5, GPT-2, and DPO models to assess grammar, coherence, and task achievement.
