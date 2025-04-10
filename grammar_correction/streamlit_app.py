@@ -1,6 +1,3 @@
-# ======================================
-# 📦 CELL 5: HYBRID INFERENCE (T5 + LanguageTool) + STREAMLIT + JS
-# ======================================
 import language_tool_python
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 import torch
@@ -101,7 +98,7 @@ function diffText(original, corrected) {
 
 # Streamlit UI
 st.set_page_config(page_title="Grammar Correction App", layout="wide")
-st.title("📜 Grammar Correction (T5 + LanguageTool + JS Diff)")
+st.title("📜 Grammar Correction")
 
 input_text = st.text_area("✏️ Input Sentence", height=200, label_visibility="visible")
 
@@ -110,7 +107,7 @@ if input_text:
 
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.markdown("### 🖍️ Visual Diff (Read-only)")
+        st.markdown("### 🖍️ Visual Diff")
         components.html(f"""
             {diff_js}
             <div id="diff-output" style="width: 100%; height: 200px; background-color: #2c2c2c; color: white; padding: 10px; font-family: 'Source Code Pro', monospace; border-radius: 6px; border: 1px solid #555; overflow: auto;"></div>
