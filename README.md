@@ -4,20 +4,20 @@
 
 # This is the landing page of the "Essay Gen & Scoring" web app.
 
-# The app offers AI-powered Essay Scoring and Generation tailored for IELTS and academic writing practice.
+### The app offers AI-powered Essay Scoring and Generation tailored for IELTS and academic writing practice.
 
-# Visitors are greeted with a clean and minimal interface.
+### Visitors are greeted with a clean and minimal interface.
 
-# A central call-to-action button, “Try the Web App”, allows users to quickly access the core functionality.
+### A central call-to-action button, “Try the Web App”, allows users to quickly access the core functionality.
 
-# Top navigation includes:
+### Top navigation includes:
 
-# Home
+### Home
 
-# Try It
+### Try It
 
-# About
+### About
 
-# Contact
+### Contact
 
-# This page acts as the entry point, explaining the core value proposition of the tool and guiding users toward interactive features.
+### This page acts as the entry point, explaining the core value proposition of the tool and guiding users toward interactive features.
