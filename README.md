@@ -1,5 +1,6 @@
 # NLP-Project -WebApp
-
+Landing Page Overview
+The landing page of the "Essay Gen & Scoring" web application serves as a clean and simple introduction to the platform’s functionality. It presents users with a bold statement about its capabilities—AI-powered essay scoring and generation—tailored for academic and IELTS writing. The layout includes a prominent call-to-action button labeled “Try the Web App,” encouraging immediate engagement. Navigation links at the top of the page—Home, Try It, About, and Contact—help users explore the app with ease. This page is designed as the entry point that clearly communicates the purpose of the tool and invites users into a smooth, guided experience.
 ![image](https://github.com/user-attachments/assets/372d9924-35c3-40e4-91e7-65a4b2b24820)
 
 # This is the landing page of the "Essay Gen & Scoring" web app.
