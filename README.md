@@ -30,3 +30,44 @@
 ### Essay Generation: Users can input a prompt, and the system will generate a band-appropriate essay for them.
 
 ### The backend utilizes T5, GPT-2, and DPO models to assess grammar, coherence, and task achievement.
+
+# Current Limitations
+### No real-time grammar correction (to be added in future versions).
+
+### Limited dataset used for band scoring model training.
+
+### UI is functional but needs polish and responsiveness improvements.
+
+### Feedback suggestions are sometimes generic.
+
+# Future Progress
+### Implement live grammar correction with edit suggestions.
+
+### Add interactive highlighted feedback in user essays.
+
+### Improve essay generation to better match task responses.
+
+### Mobile responsiveness and UI/UX enhancements.
+
+### Add user accounts and save history of essays.
+
+# Web App Structure
+### The app consists of:
+
+### Landing page (intro + links)
+
+### Essay input page with options:
+
+### User writes their own essay
+
+### System generates an essay based on prompt
+
+### Results page that displays:
+
+### Band Score
+
+### Evaluation and suggestions
+
+### Improved version of the essay
+
+
