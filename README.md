@@ -25,7 +25,7 @@
 ### we will add our own GIF later on
 
 # What This Application Is About
-### This web application helps users improve their IELTS Writing skills. It has two core features:
+### This web application helps users improve their English Writing skills. It has two core features:
 
 ### Essay Scoring: Users can paste their own IELTS essays and receive a band score along with a detailed evaluation.
 
