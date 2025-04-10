@@ -22,6 +22,8 @@
 
 ### This page acts as the entry point, explaining the core value proposition of the tool and guiding users toward interactive features.
 
+### we will add our own GIF later on
+
 # What This Application Is About
 ### This web application helps users improve their IELTS Writing skills. It has two core features:
 
