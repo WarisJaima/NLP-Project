@@ -64,7 +64,7 @@
 
 ### Results page that displays:
 
-### Band Score
+### Scoring
 
 ### Evaluation and suggestions
 
