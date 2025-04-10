@@ -16,6 +16,7 @@ Another major improvement will be in the evaluation system, which will:
 - Offer targeted writing suggestions for improvement,
 - Highlight weaknesses in grammar, cohesion, and lexical resource,
 - Show a before-and-after comparison by providing an improved version of the user's essay.
+
 Additionally, there are plans to improve UI/UX design, make the platform fully responsive across devices, and introduce user accounts, enabling users to save essays and track progress over time.
 
 ### Web App Structure
