@@ -56,7 +56,7 @@
 
 ### Landing page (intro + links)
 
-### Essay input page with options:
+### try the app link
 
 ### User writes their own essay
 
