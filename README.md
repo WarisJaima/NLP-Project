@@ -4,7 +4,7 @@
 
 # This is the landing page of the "Essay Gen & Scoring" web app.
 
-### The app offers AI-powered Essay Scoring and Generation tailored for IELTS and academic writing practice.
+### The app offers AI-powered Essay Scoring and Generation tailored for English and academic writing practice.
 
 ### Visitors are greeted with a clean and minimal interface.
 
