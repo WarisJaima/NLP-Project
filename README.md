@@ -52,8 +52,7 @@
 ### Mobile responsiveness and UI/UX enhancements.
 
 ### Add user accounts and save history of essays.
-### Evaluation & Suggestions
-### After generating or submitting an essay, the system will:
+### Evaluation & Suggestions (After generating or submitting an essay, the system will)
 
 ### - Evaluate it based on IELTS band criteria.
 
