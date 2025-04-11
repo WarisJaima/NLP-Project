@@ -20,7 +20,7 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
         --> LangChain – Prompt chaining for multi-paragraph generation
         --> LanguageTool – Rule-based grammar and coherence checking
 
- * Preprocessing
+    * Preprocessing
          --> Filtering: Only essays with band ≥ 7.0 and >220 words
          --> Paragraph Splitting: Intro, Body 1, Body 2 (merged), Conclusion
          --> Data Cleaning: Removed essays with poor structure, high redundancy
@@ -30,7 +30,7 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
          --> Paraphrased intros (light T5-based model)
          --> Contrastive augmentation for Body 2
 
-* Modeling
+    * Modeling
          --> Architecture: T5-base (220M params)
          --> LoRA Configuration: r=32, alpha=64, on "q" and "v" projection layers
          --> Training: 4 epochs, batch size 2, learning rate 3e-4, FP16 enabled
@@ -43,18 +43,18 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
          --> Missing arguments (keyword-based)
          --> Reused n-grams
 
-* Inference Pipeline
+    * Inference Pipeline
          --> Built using LangChain SequentialChain: Intro → Body1 → Body2 (context-aware) → Conclusion
          --> Evaluation included:
          --> Word count & coherence check
          --> Body1–Body2 contrast score
          --> Argument keyword presence
 
-* Grammar issue detection (via LanguageTool)
+    * Grammar issue detection (via LanguageTool)
 
-* Essay regeneration if conditions not met (max 5 retries)
+    * Essay regeneration if conditions not met (max 5 retries)
 
-* Postprocessing Highlights Essays must meet:
+    * Postprocessing Highlights Essays must meet:
          --> Min 220 words
          --> Max 60% Body1–Body2 lexical overlap
          --> Argument quality verified via keyword scan
@@ -62,10 +62,10 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
          --> Conflict detection between intro and conclusion
          --> Repeated words flagged (>2 times if >3 characters)
 
-* Grammar errors reported (not corrected) using LanguageTool
+    * Grammar errors reported (not corrected) using LanguageTool
 
 ## 2. Grammar Correction System
-* Tools Used
+    * Tools Used
          --> T5-base (vennify/grammar-correction) model
          --> Hugging Face Datasets – Grammarly CoEdit
          --> nlpaug – WordNet synonym augmentation
@@ -74,34 +74,34 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
          --> Streamlit – Web UI
          --> JavaScript Diff Viewer – Visual diff between input/output
 
-* Preprocessing & Augmentation
+   * Preprocessing & Augmentation
          --> Tasks used: gec, clarity, simplification, paraphrase
          --> Synonym-based augmentation with nlpaug for lexical variety
          --> Added task prefixes (e.g., gec:) to support multi-task training
 
-* Modeling
+   * Modeling
          --> Fine-tuned with:
          --> Batch size: 8
          --> Epochs: 3
          --> Learning rate: 3e-5
          --> FP16 mixed precision
 
-* Dataset: 5% of Grammarly CoEdit (filtered and augmented)
+   * Dataset: 5% of Grammarly CoEdit (filtered and augmented)
 
-* Postprocessing
+   * Postprocessing
          --> LanguageTool Pre-check: Cleaned up basic errors before model input
          --> Rule-Based Corrections:
          --> Comparatives: e.g., "more simple" → "simpler"
          --> Conditionals: e.g., "If I had..., I will" → "...I would"
          --> Time Phrases: e.g., "since years" → "for years"
 
-* Inference & Interface
+   * Inference & Interface
          --> Streamlit-based UI with:
          --> Paragraph-wise correction
          --> Interactive grammar check with LanguageTool
          --> Before/after diff highlighting via JS
 
-* Evaluation Metrics For essay generation:
+   * Evaluation Metrics For essay generation:
          --> Semantic Score – SBERT cosine similarity
          --> Diversity Score – distinct-2 n-gram ratio
          --> F1 Score – Word-level overlap
