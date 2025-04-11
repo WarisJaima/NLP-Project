@@ -9,7 +9,7 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
 
 
 ## 1. Essay Generation (IELTS Writing Task 2)
- * Tools Used
+    * Tools Used
         --> Transformers (Hugging Face) – T5-base model and tokenizer
         --> PEFT (LoRA) – Lightweight fine-tuning with low-rank adapters
         --> WandB – Logging, tracking and visualization of experiments
