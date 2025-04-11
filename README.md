@@ -10,15 +10,15 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
 
 ## 1. Essay Generation (IELTS Writing Task 2)
 * Tools Used
-  -> Transformers (Hugging Face) – T5-base model and tokenizer
-  -> PEFT (LoRA) – Lightweight fine-tuning with low-rank adapters
-  -> WandB – Logging, tracking and visualization of experiments
-  -> Hugging Face Datasets – For loading chillies/IELTS-writing-task-2-evaluation
-  -> SentenceTransformers (SBERT) – Semantic similarity evaluation
-  -> Facebook BART-MNLI – NLI-based contradiction and relevance detection
-  -> Scikit-learn – F1 score metrics
-  -> LangChain – Prompt chaining for multi-paragraph generation
-  -> LanguageTool – Rule-based grammar and coherence checking
+  --> Transformers (Hugging Face) – T5-base model and tokenizer
+  --> PEFT (LoRA) – Lightweight fine-tuning with low-rank adapters
+  --> WandB – Logging, tracking and visualization of experiments
+  --> Hugging Face Datasets – For loading chillies/IELTS-writing-task-2-evaluation
+  --> SentenceTransformers (SBERT) – Semantic similarity evaluation
+  --> Facebook BART-MNLI – NLI-based contradiction and relevance detection
+  --> Scikit-learn – F1 score metrics
+  --> LangChain – Prompt chaining for multi-paragraph generation
+  --> LanguageTool – Rule-based grammar and coherence checking
 
 * Preprocessing
  -> Filtering: Only essays with band ≥ 7.0 and >220 words
