@@ -74,39 +74,49 @@ Grammar Correction and Simplification using T5-base and rule-based postprocessin
          --> Streamlit – Web UI
          --> JavaScript Diff Viewer – Visual diff between input/output
 
-   * Preprocessing & Augmentation
+    * Preprocessing & Augmentation
          --> Tasks used: gec, clarity, simplification, paraphrase
          --> Synonym-based augmentation with nlpaug for lexical variety
          --> Added task prefixes (e.g., gec:) to support multi-task training
 
-   * Modeling
+    * Modeling
          --> Fine-tuned with:
          --> Batch size: 8
          --> Epochs: 3
          --> Learning rate: 3e-5
          --> FP16 mixed precision
 
-   * Dataset: 5% of Grammarly CoEdit (filtered and augmented)
+    * Dataset: 5% of Grammarly CoEdit (filtered and augmented)
 
-   * Postprocessing
+    * Postprocessing
          --> LanguageTool Pre-check: Cleaned up basic errors before model input
          --> Rule-Based Corrections:
          --> Comparatives: e.g., "more simple" → "simpler"
          --> Conditionals: e.g., "If I had..., I will" → "...I would"
          --> Time Phrases: e.g., "since years" → "for years"
 
-   * Inference & Interface
+    * Inference & Interface
          --> Streamlit-based UI with:
          --> Paragraph-wise correction
          --> Interactive grammar check with LanguageTool
          --> Before/after diff highlighting via JS
 
-   * Evaluation Metrics For essay generation:
+    * Evaluation Metrics For essay generation:
          --> Semantic Score – SBERT cosine similarity
          --> Diversity Score – distinct-2 n-gram ratio
          --> F1 Score – Word-level overlap
 
-Final Score – Weighted average of above
+
+### Section-wise Performance Metrics
+
+| **Section**   | **Avg Training Loss** | **Avg Validation Loss** | **Avg Semantic Score** | **Avg Diversity Score** | **Avg F1** | **Avg Final Score** |
+|---------------|------------------------|---------------------------|--------------------------|--------------------------|------------|----------------------|
+| **INTRO**     |                        | 2.8593                    | 2.6405                   | 0.2452                   | 0.4795     | 0.7522               | 0.8972               |
+| **BODY 1**    |                        | 3.3758                    | 3.2849                   | 0.2153                   | 0.7249     | 0.7358               | 0.6674               |
+| **BODY 2**    |                        | 3.3425                    | 3.1817                   | 0.2445                   | 0.7414     | 0.7276               | 0.6369               |
+| **CONCLUSION**|                        | 3.0788                    | 2.8423                   | 0.2018                   | 0.4619     | 0.7399               | 0.9375               |
+
+
 =======
 # NLP-Project -WebApp
 ### Landing Page Overview
