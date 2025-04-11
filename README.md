@@ -2,7 +2,7 @@
 This project focuses on two main tasks in NLP:
 
 IELTS Writing Task 2 Essay Generation using T5-base with LoRA fine-tuning: 
-https://www.youtube.com/watch?v=bh9voRM_CkU
+[![Watch Video](https://github.com/WarisJaima/NLP-Project/blob/main/Screenshot%20from%202025-04-11%2016-33-16.png)](https://www.youtube.com/watch?v=bh9voRM_CkU)
 
 Grammar Correction and Simplification using T5-base and rule-based postprocessing: https://www.youtube.com/watch?v=ysy86-DAu-o
 
