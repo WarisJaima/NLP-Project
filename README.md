@@ -58,7 +58,7 @@ Low lexical diversity
 
 Body1–Body2 overlap
 
-Contradictions (via MNLI)
+Contradictions (via MNLI) hello
 
 Topic irrelevance
 
