@@ -1,0 +1,3 @@
+[submodule "Waris"]
+	path = Waris
+	url = https://github.com/WarisJaima/NLP-Project.git
