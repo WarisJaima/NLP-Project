@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NLP_Ielts</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background-color: #f9fafb;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1976d2;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero-text {
+      max-width: 600px;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero-text p {
+      font-size: 1.125rem;
+      color: #555;
+    }
+    .hero-cta {
+      margin-top: 2rem;
+    }
+    .hero-cta button {
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .hero-image img {
+      width: 500px;
+      border-radius: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+    }
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-image img {
+        width: 100%;
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <div class="logo">Essay Gen & Scoring</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Try It</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text" style="margin-right: 10rem;">
+      <h1>AI-powered Essay Scoring and Generation</h1>
+      <p>Write essays, get feedback instantly, or generate a well-structured academic draft from any prompt. Built for English learners, students, and professionals who want to improve their writing.</p>
+      <div class="hero-cta">
+        <a href="/essay" class="btn btn-primary">Try the Web App</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="App Preview" />
+    </div>
+  </section>
+
+  <footer class="text-center py-3 mt-auto">
+    &copy; Natural Language Processing 2025
+  </footer>
+</body>
+</html>

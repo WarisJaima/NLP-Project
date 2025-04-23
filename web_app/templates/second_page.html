@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NLP_Ielts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background-color: #f9fafb;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1976d2;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    #essayInput {
+      width: 80%;
+      max-width: 80%;
+      height: 100px;
+      padding: 0.7rem 1rem;
+      font-size: 1.05rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #essayInput:focus {
+      outline: none;
+      border-color: #1976d2;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+    }
+
+    .hero-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    }
+
+    .dark-mode {
+      background-color: #212121;
+      color: #ffffff;
+    }
+
+    .dark-mode header {
+      background-color: #171717;
+    }
+
+    .dark-mode a {
+      color: #ffffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+    }
+
+    .div-hover:hover {
+      cursor: pointer;
+    }
+
+    /* Fade-In Animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: Adds a slight movement effect */
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0); /* The final position after fade-in */
+      }
+    }
+
+    /* Essay writing area container */
+    .essay-container {
+ 	 position: relative;
+  	width: 80%;
+  	max-width: 80%;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 0.5rem;  /* Add some space between the textarea, word count, and buttons */
+		}
+    /* Word count positioning */
+    .word-count {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 0.9rem;
+      color: #555;
+      background-color: rgba(255, 255, 255, 0.7); /* Slight background for readability */
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    /* Copy & Save buttons */
+    .essay-buttons {
+    display: flex;
+    gap: 1rem;
+    }
+    
+.essay-buttons button {
+  font-size: 0.75rem; /* Smaller font size */
+  padding: 0.25rem 0.5rem; /* Smaller padding */
+  border-radius: 10px; /* Same border radius as input text */
+  border: 1px solid #ccc; /* Light border matching input text */
+  background-color: transparent; /* Transparent background */
+  color: #555; /* Match the color of the word count */
+  transition: all 0.3s ease;
+  height: 30px; /* Smaller height */
+}
+
+ /* Essay writing area */
+    #pagea4_1 {
+      margin-top: 1rem;
+      display: none;
+      justify-content: center;
+      align-items: flex-start;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #pagea4_1.show {
+      display: flex;
+      opacity: 1;
+      animation: fadeIn 0.5s ease-out; /* Apply the animation */
+    }
+
+    #pagea4_1 textarea {
+      width: 100%;
+      height: 60vh;
+      padding: 1rem;
+      font-size: 1.05rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #pagea4_1 textarea:focus {
+      outline: none;
+      border-color: #1976d2;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+    }
+
+    @media (max-width: 768px) {
+        #essayInput,
+        #pagea4_1 textarea {
+            width: 95%;
+        }
+
+        #pagea4_1 textarea {
+            height: auto;
+        }
+
+        #splitScreenArea {
+            flex-direction: column;
+        }
+
+        #splitScreenArea > div {
+            flex: none;
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid #ccc;
+            transition: transform 1s ease-in-out;
+        }
+
+        #evaluationArea {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #evaluationArea.show {
+            opacity: 1;
+        }
+    }
+    #grammarCompare .d-flex {
+  align-items: stretch;
+}
+
+#originalEssay,
+#correctedEssay {
+  height: auto;       
+  min-height: 400px;
+  flex: 1;              
+  resize: vertical;
+}
+
+#grammarCompare .d-flex > textarea,
+#grammarCompare .d-flex > div {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Essay Gen & Scoring</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Try It</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PROMPT INPUT AREA -->
+<section class="hero">
+    <textarea id="essayInput" spellcheck="true" placeholder="e.g., Should school uniforms be mandatory for all students?"></textarea>
+  
+    <div class="hero-buttons">
+      <div class="dropdown">
+        <button class="btn btn-outline-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Prompt Idea?
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Should school uniforms be mandatory for all students?</a></li>
+          <li><a class="dropdown-item" href="#">The impact of social media on modern communication</a></li>
+          <li><a class="dropdown-item" href="#">Is artificial intelligence a threat or a benefit to humanity?</a></li>
+          <li><a class="dropdown-item" href="#">The importance of mental health awareness in schools</a></li>
+          <li><a class="dropdown-item" href="#">Do video games promote violence in teenagers?</a></li>
+          <li><a class="dropdown-item" href="#">How climate change affects developing countries</a></li>
+          <li><a class="dropdown-item" href="#">Online learning vs. traditional classroom learning</a></li>
+          <li><a class="dropdown-item" href="#">Should governments ban single-use plastics?</a></li>
+          <li><a class="dropdown-item" href="#">The benefits and risks of space exploration</a></li>
+          <li><a class="dropdown-item" href="#">How does technology influence our daily habits?</a></li>
+        </ul>
+      </div>
+  
+      <button class="btn btn-primary" onclick="writes()">Write Essay</button>
+      <button class="btn btn-primary" id="generateBtn">Generate Essay</button>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="mt-3 text-center" style="display: none;">
+        <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Generating...</span>
+        </div>
+        <p class="text-muted small mt-1">Generating essay...</p>
+    </div>
+
+    <!-- Essay Output (for streaming) -->
+    <div id="essayOutput" class="mt-4" style="width: 80%; margin: 0 auto;"></div>
+  
+  </section>  
+
+  <!-- ESSAY WRITING AREA -->
+<div id="pagea4_1" class="d-flex flex-column align-items-center">
+    <div class="essay-container d-none" id="generatedEssayBlock">
+        <textarea id="essayInput2" spellcheck="true" placeholder="..." readonly></textarea>
+    </div>
+  
+    <div id="grammarCompare" class="container mt-2 d-none">
+      <div class="d-flex justify-content-center align-items-stretch gap-3 flex-wrap">
+        <!-- Input Essay -->
+        <textarea id="originalEssay" class="form-control" 
+          style="white-space: pre-wrap; padding: 1rem; resize: vertical; border: 1px solid #ced4da; border-radius: 0.375rem; min-height: 400px;">
+        </textarea>
+
+        <!-- Spinner -->
+        <div id="processingSpinner" class="text-center d-none" style="width: 6%;">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Processing...</span>
+          </div>
+          <p class="text-muted small mt-1" style="font-size: 0.8rem;">Loading</p>
+        </div>
+      
+        <!-- Output Essay -->
+        <div id="correctedEssay" class="form-control bg-light"
+          style="white-space: pre-wrap; width: 45%; padding: 1rem; overflow-y: auto; border: 1px solid #ced4da; border-radius: 0.375rem; min-height: 400px;">
+        </div>
+        <textarea id="scoredFeedback" class="form-control d-none" 
+          style="white-space: pre-wrap; padding: 1rem; resize: vertical; border: 1px solid #ced4da; border-radius: 0.375rem; min-height: 400px;">
+        </textarea>
+      </div>      
+    </div>
+  
+    <div class="d-flex justify-content-between align-items-center px-2 mt-2" style="width: 80%; max-width: 80%;">
+      <div id="wordCount" class="text-muted small"></div>
+      <div id="generatedButtons" class="essay-buttons mt-2 d-none">
+        <button class="btn btn-outline-secondary btn-sm" onclick="copyText('essayInput2')">Copy</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="saveText('essayInput2')">Save</button>
+      </div>  
+    </div>
+  </div>  
+  
+<!-- SPLIT SCREEN AREA FOR EVALUATION -->
+
+<div id="splitScreenArea" class="d-none" style="display: flex; width: 100%; height: 100vh;">
+  <!-- LEFT SIDE: Reusing the Existing Essay Writing Area -->
+  <div style="flex: 50%; padding: 1rem; border-right: 1px solid #ccc;">
+    <h5>Written Essay</h5>
+    <!-- Use the same textarea for writing the essay -->
+    <textarea id="essayInput2" spellcheck="true" placeholder="Write your essay here..." style="width: 100%; height: 80%; padding: 1rem; font-size: 1.05rem; border-radius: 10px; border: 1px solid #ccc; resize: vertical;" readonly></textarea>
+  </div>
+
+  <!-- RIGHT SIDE: Evaluation Area -->
+  <div style="flex: 50%; padding: 1rem;">
+    <h5>Evaluation</h5>
+    <div id="evaluationArea" style="opacity: 0; transition: opacity 1s ease-in-out;">
+      <p><strong>Score:</strong> <span id="essayScore">Not Evaluated</span></p>
+      <p><strong>Feedback:</strong> <span id="essayFeedback">Your essay score and feedback will be displayed here.</span></p>
+    </div>
+  </div>
+</div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="row justify-content-center d-none" id="pagea4_2">
+    <div class="col-6 text-center mt-3">
+      <div class="row">
+        <div class="row">
+          <div class="col-4 mt-3">
+            <button class="btn btn-primary w-100" onclick="correctGrammar()">Grammar Correction</button>
+          </div>
+          <div class="col-4 mt-3">
+            <button class="btn btn-primary w-100" onclick="scoreEssay()">Essay Scoring</button>
+          </div>
+          <div class="col-4 mt-3">
+            <button class="btn btn-primary w-100" onclick="evaluateEssay()">Essay Evaluate</button>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>  
+
+  <!-- FOOTER -->
+  <footer class="text-center py-3 mt-auto">
+    &copy; Natural Language Processing 2025
+  </footer>
+
+  <!-- DARK MODE TOGGLE -->
+  <div class="position-fixed bottom-0 end-0 p-4 div-hover" onclick="darkmode()" style="z-index: 1030;">
+    <div class="rounded-circle bg-primary shadow d-flex justify-content-center align-items-center" style="height: 50px; width: 50px;">
+      <i class="bi bi-moon-fill text-white fs-5"></i>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="Score" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Score</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Your essay score and analysis will appear here.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function darkmode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function writes() {
+      const essayContainer = document.getElementById("pagea4_1");
+      const textarea = document.getElementById("essayInput2");
+
+      // Clear any existing text in the textarea
+      textarea.value = "";
+
+      // Show the essay writing area with fade-in effect
+      essayContainer.classList.add("show");
+
+      // Show the action buttons
+      document.getElementById("pagea4_2").classList.remove("d-none");
+    }
+
+    // Fill textarea with dropdown prompt
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function () {
+        document.getElementById('essayInput').value = this.textContent;
+      });
+    });
+
+    // Word counter for essayInput2
+    const wordCounter = document.getElementById('wordCount');
+    const essayTextArea = document.getElementById('essayInput2');
+    essayTextArea.addEventListener('input', () => {
+      const words = essayTextArea.value.trim().split(/\s+/).filter(word => word.length > 0);
+      wordCounter.textContent = `Word: ${words.length}`;
+    });
+    
+ function copyEssayTextToLeftPanel() {
+  // Get the text from the essay input field
+  var essayText = document.getElementById("essayInput").value;
+
+  // Set the text in the left panel (displayEssayText)
+  document.getElementById("displayEssayText").textContent = essayText;
+}
+   function splitScreen() {
+  // Show the split-screen area (left and right)
+  document.getElementById("splitScreenArea").classList.remove("d-none");
+  document.getElementById("splitScreenArea").style.display = "flex";
+
+  // Hide the Input essay writing area
+  document.getElementById("pagea4_1").style.display = "none";
+
+  // Copy the essay text to the left panel
+  copyEssayTextToLeftPanel();
+}
+
+
+// Function to show the split screen area with the evaluation and essay text
+function showEvaluation() {
+  // Show the split-screen area (left and right)
+  document.getElementById("splitScreenArea").classList.remove("d-none");
+  document.getElementById("splitScreenArea").style.display = "flex";
+
+  // Optionally, hide the Input essay writing area
+  document.getElementById("pagea4_1").style.display = "none";
+
+  // Copy the essay text to the left panel
+  copyEssayTextToLeftPanel();
+}
+
+    function copyText(textareaId) {
+        const text = document.getElementById(textareaId).value;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Text copied to clipboard');
+        });
+    }
+
+    function saveText(textareaId) {
+        const text = document.getElementById(textareaId).value;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'essay.txt';
+        link.click();
+    }
+  
+    async function generateEssay() {
+  hideAllEssayBlocks();
+  const topic = document.getElementById("essayInput").value.trim();
+  if (!topic) {
+    alert("Please enter a topic first.");
+    return;
+  }
+
+  document.getElementById("loadingSpinner").style.display = "block";
+
+  const source = new EventSource(`/generate_stream?topic=${encodeURIComponent(topic)}`);
+  let allSections = { intro: "", body1: "", body2: "", conclusion: "" };
+
+  const container = document.getElementById("pagea4_1");
+  container.classList.add("show");
+  container.style.display = "flex";
+  document.getElementById("pagea4_1").classList.remove("d-none");  // 👈 FIX: show container
+  document.getElementById("generatedEssayBlock").classList.remove("d-none");
+  document.getElementById("generatedButtons").classList.remove("d-none");
+//   document.getElementById("manualButtons").classList.add("d-none");
+
+  source.onmessage = function (event) {
+    const data = JSON.parse(event.data);
+    const { section, text } = data;
+    allSections[section] = text;
+    const fullEssay = [allSections.intro, allSections.body1, allSections.body2, allSections.conclusion].filter(Boolean).join("\n\n");
+    document.getElementById("essayInput2").value = fullEssay;
+  };
+
+  source.onerror = function () {
+    source.close();
+    document.getElementById("loadingSpinner").style.display = "none";
+  };
+
+  source.onopen = function () {
+    console.log("🟢 Streaming started...");
+  };
+}
+
+// === Gán sự kiện cho nút "Generate Essay" ===
+document.querySelectorAll("button").forEach(btn => {
+  if (btn.textContent.trim() === "Generate Essay") {
+    btn.onclick = generateEssay;
+  }
+});
+
+function correctGrammar() {
+  const essay = document.getElementById("originalEssay").value.trim();
+
+  if (!essay) {
+    alert("❗ Please enter the essay before correcting grammar.");
+    document.getElementById("originalEssay").focus();
+    return;
+  }
+
+  document.getElementById("processingSpinner").classList.remove("d-none");
+
+  fetch("/grammar_correct", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text: essay })
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("originalEssay").value = essay;
+    document.getElementById("correctedEssay").innerHTML = data.corrected;
+    document.getElementById("grammarCompare").classList.remove("d-none");
+    document.getElementById("pagea4_1").classList.remove("d-none");
+    document.getElementById("correctedEssay").classList.remove("d-none");
+    document.getElementById("scoredFeedback").classList.add("d-none");
+    setTimeout(() => {
+      document.getElementById("processingSpinner").classList.add("d-none");
+    }, 500);
+    alert("✅ Grammar corrected!");
+  })
+  .catch(err => {
+    console.error("Correction error:", err);
+    document.getElementById("processingSpinner").classList.add("d-none");
+    alert("❌ Failed to correct grammar.");
+  });
+}
+
+function hideAllEssayBlocks() {
+  document.getElementById("pagea4_1").classList.remove("show");
+  document.getElementById("pagea4_1").style.display = "none";
+  document.getElementById("grammarCompare")?.classList.add("d-none");
+  document.getElementById("generatedEssayBlock")?.classList.add("d-none");
+  document.getElementById("pagea4_2")?.classList.add("d-none");
+}
+
+function writes() {
+  hideAllEssayBlocks();
+  const container = document.getElementById("pagea4_1");
+  container.classList.add("show");
+  container.style.display = "flex";
+  document.getElementById("pagea4_1").classList.remove("d-none");
+  document.getElementById("grammarCompare").classList.remove("d-none");
+  document.getElementById("generatedButtons").classList.add("d-none");
+
+  document.getElementById("originalEssay").value = "";
+  document.getElementById("correctedEssay").innerHTML = ""; 
+  document.getElementById("originalEssay").focus();
+
+  document.getElementById("pagea4_2").classList.remove("d-none");
+}
+
+function evaluateEssay() {
+  const prompt = document.getElementById("essayInput").value.trim();
+  const essay = document.getElementById("originalEssay").value.trim();
+
+  if (!prompt && !essay) {
+    alert("❗ Please enter both the topic and the essay.");
+    document.getElementById("essayInput").focus();
+    return;
+  }
+
+  if (!prompt) {
+    alert("❗ Please enter the topic.");
+    document.getElementById("essayInput").focus();
+    return;
+  }
+
+  if (!essay) {
+    alert("❗ Please enter the Input essay.");
+    document.getElementById("originalEssay").focus();
+    return;
+  }
+
+  const wordCount = essay.split(/\s+/).filter(w => w.length > 0).length;
+  if (wordCount < 200) {
+    alert(`❗ Essay is too short (${wordCount} words). Minimum is 200 words.`);
+    return;
+  }
+
+  document.getElementById("processingSpinner").classList.remove("d-none");
+
+  fetch("/evaluate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: prompt, essay: essay })
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("correctedEssay").classList.add("d-none");
+    document.getElementById("scoredFeedback").classList.remove("d-none");
+    document.getElementById("scoredFeedback").value = data.feedback || scoreLines;
+    document.getElementById("correctedEssay").scrollTop = 0;
+    document.getElementById("grammarCompare").classList.remove("d-none");
+    setTimeout(() => {
+      document.getElementById("processingSpinner").classList.add("d-none");
+    }, 500);
+    alert("✅ Evaluation completed!");
+  })
+  .catch(err => {
+    console.error("Evaluation error:", err);
+    document.getElementById("processingSpinner").classList.add("d-none");
+    alert("❌ Failed to evaluate essay.");
+  });
+}
+
+function scoreEssay() {
+  const prompt = document.getElementById("essayInput").value.trim();
+  const essay = document.getElementById("originalEssay").value.trim();
+
+  if (!prompt && !essay) {
+    alert("❗ Please enter both the topic and the essay.");
+    document.getElementById("essayInput").focus();
+    return;
+  }
+
+  if (!prompt) {
+    alert("❗ Please enter the topic.");
+    document.getElementById("essayInput").focus();
+    return;
+  }
+
+  if (!essay) {
+    alert("❗ Please enter the Input essay.");
+    document.getElementById("originalEssay").focus();
+    return;
+  }
+
+  const wordCount = essay.split(/\s+/).filter(w => w.length > 0).length;
+  if (wordCount < 200) {
+    alert(`❗ Essay is too short (${wordCount} words). Minimum is 200 words.`);
+    return;
+  }
+
+  document.getElementById("processingSpinner").classList.remove("d-none");
+
+  fetch("/score_essay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: prompt, essay: essay })
+  })
+  .then(res => res.json())
+  .then(data => {
+    const scoreLines = Object.entries(data)
+      .map(([k, v]) => `${k}: ${v}`)
+      .join("\n");
+
+    document.getElementById("correctedEssay").classList.add("d-none");
+    document.getElementById("scoredFeedback").classList.remove("d-none");
+    document.getElementById("scoredFeedback").value = scoreLines;
+    document.getElementById("scoredFeedback").scrollTop = 0;
+    document.getElementById("grammarCompare").classList.remove("d-none");
+    document.getElementById("pagea4_1").classList.remove("d-none");
+    alert("✅ Essay scored!");
+  })
+  .catch(err => {
+    console.error("Scoring error:", err);
+    alert("❌ Failed to score essay.");
+  })
+  .finally(() => {
+    setTimeout(() => {
+      document.getElementById("processingSpinner").classList.add("d-none");
+    }, 500);
+  });
+}
+
+  </script>
+</body>
+</html>
+
