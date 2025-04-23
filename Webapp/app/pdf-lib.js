@@ -1,1 +1,0 @@
-// Placeholder: PDF library (jsPDF or html2pdf will go here)
