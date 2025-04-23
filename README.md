@@ -14,6 +14,9 @@ This project focuses on two main tasks in NLP:
 4. **Essay Evaluation Model**  
    Using Mistral: [Essay Evaluation](https://www.youtube.com/watch?v=xUbeBi-gDyM)
 
+5. **Web Application**  
+   Using Mistral: [AI for Ielts Writting](https://www.youtube.com/watch?v=aHQ5t2p3SIo)
+
 ---
 
 ## 1. Essay Generation (IELTS Writing Task 2)
