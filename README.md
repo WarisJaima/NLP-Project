@@ -3,16 +3,16 @@
 This project focuses on two main tasks in NLP:
 
 1. **IELTS Writing Task 2 Essay Generation**  
-   Using T5-base with LoRA fine-tuning: [YouTube Demo](https://www.youtube.com/watch?v=bh9voRM_CkU)
+   Using T5-base with LoRA fine-tuning: [Essay Generation](https://www.youtube.com/watch?v=bh9voRM_CkU)
 
 2. **Grammar Correction and Simplification**  
-   Using T5-base and rule-based postprocessing: [YouTube Demo](https://www.youtube.com/watch?v=ysy86-DAu-o)
+   Using T5-base and rule-based postprocessing: [Grammar Correction](https://www.youtube.com/watch?v=ysy86-DAu-o)
 
 3. **Essay Scoring Model**  
-   Using DeBERTa (RegressionTrainer): [YouTube Demo](https://www.youtube.com/watch?v=t_tLX0fkJQc)
+   Using DeBERTa (RegressionTrainer): [Essay Scoring](https://www.youtube.com/watch?v=t_tLX0fkJQc)
 
 4. **Essay Evaluation Model**  
-   Using Mistral: [YouTube Demo](https://www.youtube.com/watch?v=xUbeBi-gDyM)
+   Using Mistral: [Essay Evaluation](https://www.youtube.com/watch?v=xUbeBi-gDyM)
 
 ---
 
